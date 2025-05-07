@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
-import Login from "./Login";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -14,29 +13,6 @@ const HomePage = () => {
         </Link>
       </div>
     </div>
-  );
-};
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const role = isInstructor ? "Instructor" : "Student";
-  const response = await fetch("http://localhost:5000/api/Users/Register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, username, password, role }),
-  });
-  const data = await response.json();
-  if (response.ok) {
-    alert("Registration successful! Please log in.");
-    window.location.href = "/";
-  } else {
-    alert(data || "Registration failed!");
-  }
-};
-
-const App = () => {
-  return (
-    <Route path="/login" element={<Login />} />
   );
 };
 
